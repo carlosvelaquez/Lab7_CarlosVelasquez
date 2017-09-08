@@ -13,8 +13,11 @@ using namespace std;
 class Ejercito{
 private:
   string nombre;
-  vector<Escuadron> escuadronesRetaguardia;
+  Escuadron* escuadronRetaguardia = NULL;
   vector<Escuadron> escuadronesFrontales;
+
 public:
   Ejercito(string);
+  Escuadron* getEscuadronRetaguardia();
+  vector<Escuadron> getEscuadronesFrontales();
 };

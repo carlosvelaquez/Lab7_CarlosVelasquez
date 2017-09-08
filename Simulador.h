@@ -14,5 +14,7 @@ private:
   Ejercito roma;
   Ejercito cartago;
 public:
+  Ejercito* getEjercitoCartago();
+  Ejercito* getEjercitoRoma();
   void simularBatalla();
 };
