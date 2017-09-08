@@ -17,5 +17,5 @@ public:
   Simulador();
   Ejercito* getEjercitoCartago();
   Ejercito* getEjercitoRoma();
-  void simularBatalla();
+  int simularBatalla();
 };

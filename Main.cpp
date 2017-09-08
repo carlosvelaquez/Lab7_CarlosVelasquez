@@ -15,6 +15,7 @@ int main(){
     switch (menu()) {
       case 1:{
         bool salirEjercitos = false;
+        cout << "Entrando al menú de ejércitos..." << endl;
         while (!salirEjercitos) {
           switch (menuEjercitos()) {
             case 1:{
@@ -43,7 +44,7 @@ int main(){
         cout << "----------------------------------" << endl;
       }break;
       default:{
-        cout << "Opción inválida, por favor intente de nuevo." << endl;
+        cout << "Opción inválida, por favor intente de.getNombre()  nuevo." << endl;
       }break;
     }
   }

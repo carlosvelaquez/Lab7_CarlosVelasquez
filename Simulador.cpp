@@ -4,8 +4,14 @@ Simulador::Simulador(){
   roma = new Ejercito("Ejercito Romano");
   cartago = new Ejercito("Ejercito Cartaginés");
 }
-void Simulador::simularBatalla(){
+
+int Simulador::simularBatalla(){
   Escuadron* esc;
+
+  if (roma->getEscuadronRetaguardia() == NULL || cartago->getEscuadronRetaguardia() == NULL ) {
+    std::cout << "[ERROR] Uno de los ejércitos no tiene un escuadrón de retaguardia" << '\n';
+    return 1;
+  }
 
   std::cout << "Simulando Batalla..." << '\n';
   std::cout << "Es el turno de los romanos." << endl << '\n';
@@ -53,6 +59,8 @@ void Simulador::simularBatalla(){
       std::cout << "Es un empate!" << '\n';
     }
   }
+
+  return 0;
 }
 
 Ejercito* Simulador::getEjercitoRoma(){
