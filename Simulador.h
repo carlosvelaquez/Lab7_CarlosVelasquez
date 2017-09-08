@@ -11,9 +11,10 @@
 
 class Simulador{
 private:
-  Ejercito roma;
-  Ejercito cartago;
+  Ejercito* roma = NULL;
+  Ejercito* cartago = NULL;
 public:
+  Simulador();
   Ejercito* getEjercitoCartago();
   Ejercito* getEjercitoRoma();
   void simularBatalla();

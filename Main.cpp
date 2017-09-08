@@ -1,11 +1,12 @@
 #include "Ejercito.h"
+#include "Simulador.h"
 
 int menu();
 int menuEjercitos();
-int anadirEscuadron(Simulador*)
+int anadirEscuadron(Simulador*);
 
 int main(){
-  Simulador simulador;
+  Simulador* simulador = new Simulador();
 
   bool salir = false;
 
@@ -16,7 +17,10 @@ int main(){
         while (!salirEjercitos) {
           switch (menuEjercitos()) {
             case 1:{
-              anadirEscuadron(&simulador);
+              anadirEscuadron(simulador);
+            }break;
+            case 2:{
+              anadirSoldado(simulador);
             }break;
             case 4:{
               salirEjercitos = true;
@@ -90,9 +94,9 @@ int anadirEscuadron(Simulador* sim){
     return 1;
   }else{
     if (opcion == 1) {
-      ejercito = sim.getEjercitoRoma();
+      ejercito = sim->getEjercitoRoma();
     }else{
-      ejercito = sim.getEjercitoCartago();
+      ejercito = sim->getEjercitoCartago();
     }
   }
 
@@ -109,19 +113,110 @@ int anadirEscuadron(Simulador* sim){
     return 1;
   }else{
     if (opcion == 1) {
+      cout << "Añadiendo Escuadrón Frontal..." << endl << endl
+      << "Ingrese el nombre del escuadrón: ";
+      string nombre;
+      cin >> nombre;
 
+      ejercito->anadirEscuadronFrontal(new Escuadron(nombre));
     }else{
       if (ejercito->getEscuadronRetaguardia() == NULL) {
-        cout << "Añadiendo Escuadrón de Retaguardia..." << endl
-        << "Ingrese los datos requeridos" << endl << endl;
-        cout << "Nombre: ";
+        cout << "Añadiendo Escuadrón de Retaguardia..." << endl << endl
+        << "Ingrese el nombre del escuadrón: ";
         string nombre;
         cin >> nombre;
-        cout << "" << endl;
+
+        ejercito->setEscuadronRetaguardia(new Escuadron(nombre));
       }else{
         cout << "[ERROR] El ejército seleccionado ya tiene un escuadrón de retaguardia." << endl;
         return 1;
       }
     }
   }
+
+  cout << endl << "Escuadrón creado exitosamente." << endl;
+  return 0;
+}
+
+void anadirSoldado(Simulador* sim){
+  Ejercito* ejercito;
+  Escuadron* escuadron;
+  string ciudad;
+
+  int opcion;
+  cout << "Seleccione un Ejército" << endl << endl
+  << "1. Ejército Romano" << endl
+  << "2. Ejército Cartaginés" << endl << endl
+  << "Ingrese el número de la opción que desea - ";
+  cin >> opcion;
+  cout << endl;
+
+  if (opcion < 1 || opcion > 2) {
+    cout << "[ERROR] Opción no válida, intente de nuevo." << endl;
+    return 1;
+  }else{
+    if (opcion == 1) {
+      ejercito = sim->getEjercitoRoma();
+      ciudad = "Roma";
+    }else{
+      ejercito = sim->getEjercitoCartago();
+      ciudad = "Cartago"
+    }
+  }
+
+  opcion = -1;
+  cout << "Seleccione el escuadron al cual añadir el soldado" << endl << endl;
+  int i;
+
+  for (i = 0; i < ejercito->getEscuadronesFrontales().size(); i++) {
+    cout << i << ". " << ejercito->getEscuadronesFrontales().at(i).getNombre() << '\n';
+  }
+
+  cout << i << ". " << ejercito->getEscuadronRetaguardia().getNombre() << "[Frontal]" << endl << endl
+  << "Ingrese el número de la opción que desea - ";
+  cin >> opcion;
+  cout << "----------------------------------" << endl;
+
+  if (opcion < 0 || opcion > ejercito->getEscuadronesFrontales().size()+1) {
+    cout << "[ERROR] Opción no válida, intente de nuevo." << endl;
+    return 1;
+  }else{
+    if (opcion == i) {
+      escuadron = ejercito->getEscuadronRetaguardia();
+      cout << "Escuadrón Seleccionado: " << escuadron->getNombre() << endl << endl;
+    }else{
+      escuadron = ejercito->getEscuadronesFrontales().at(opcion);
+      cout << "Escuadrón Seleccionado: " << escuadron->getNombre() << endl << endl;
+    }
+  }
+
+  opcion = -1;
+  cout << "Seleccione un Tipo de Soldado" << endl << endl
+  << "1. Arquero" << endl
+  << "2. Coraza Dura" << endl
+  << "3. Asesino Oculto" << endl << endl
+  << "Ingrese el número de la opción que desea - ";
+  cin >> opcion;
+  cout << "----------------------------------" << endl;
+
+  string nombre;
+
+  switch (opcion) {
+    case 1:{
+
+    }break:
+    case 2:{
+
+    }break;
+    case 3:{
+
+    }break;
+    default:{
+      cout << "[ERROR] Opción no válida, intente de nuevo." << endl;
+      return 1;
+    }break;
+  }
+
+  cout << endl << "Soldados añadidos exitosamente." << endl;
+  return 0;
 }

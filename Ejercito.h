@@ -20,4 +20,6 @@ public:
   Ejercito(string);
   Escuadron* getEscuadronRetaguardia();
   vector<Escuadron> getEscuadronesFrontales();
+  void setEscuadronRetaguardia(Escuadron*);
+  void anadirEscuadronFrontal(Escuadron*);
 };
