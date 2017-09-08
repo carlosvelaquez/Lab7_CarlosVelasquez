@@ -25,9 +25,6 @@ int main(){
               anadirSoldado(simulador);
             }break;
             case 3:{
-              simulador->simularBatalla();
-            }break;
-            case 4:{
               salirEjercitos = true;
               cout << "Regresando a Menú Principal..." << endl;
               cout << "----------------------------------" << endl;
@@ -38,13 +35,16 @@ int main(){
           }
         }
       }break;
+      case 2:{
+        simulador->simularBatalla();
+      }break;
       case 3:{
         salir = true;
         cout << "Saliendo..." << endl;
         cout << "----------------------------------" << endl;
       }break;
       default:{
-        cout << "Opción inválida, por favor intente de.getNombre()  nuevo." << endl;
+        cout << "Opción inválida, por favor intente de nuevo." << endl;
       }break;
     }
   }
@@ -73,8 +73,7 @@ int menuEjercitos(){
   << "Menú de Ejércitos" << endl << endl
   << "1. Añadir Escuadron" << endl
   << "2. Añadir Soldados" << endl
-  << "3. Listar Escuadrones" << endl
-  << "4. Regresar a Menú Principal" << endl << endl
+  << "3. Regresar a Menú Principal" << endl << endl
   << "Ingrese el número de la opción que desea - ";
 
   cin >> op;

@@ -16,7 +16,7 @@ int Simulador::simularBatalla(){
   std::cout << "Simulando Batalla..." << '\n';
   std::cout << "Es el turno de los romanos." << endl << '\n';
 
-  std::cout << "Seleccione el ejercito frontal que atacará: " << '\n';
+  std::cout << "Seleccione el ejercito front/* message */al que atacará: " << '\n';
 
   int op;
   for (size_t i = 0; i < roma->getEscuadronesFrontales().size(); i++) {
