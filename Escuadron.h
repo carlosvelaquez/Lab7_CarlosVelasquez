@@ -22,6 +22,8 @@ public:
   void setNombre(string);
   void setSoldados(vector<Soldado>);
 
+  void anadirSoldado(Soldado*);
+
   float calcularAtaque();
   float calcularDefensa();
 };

@@ -39,3 +39,7 @@ float Escuadron::calcularDefensa(){
 
   return def;
 }
+
+void Escuadron::anadirSoldado(Soldado* sold){
+  soldados.push_back(*sold);
+}

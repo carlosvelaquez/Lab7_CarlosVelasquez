@@ -4,6 +4,7 @@
 int menu();
 int menuEjercitos();
 int anadirEscuadron(Simulador*);
+int anadirSoldado(Simulador*);
 
 int main(){
   Simulador* simulador = new Simulador();
@@ -138,7 +139,7 @@ int anadirEscuadron(Simulador* sim){
   return 0;
 }
 
-void anadirSoldado(Simulador* sim){
+int anadirSoldado(Simulador* sim){
   Ejercito* ejercito;
   Escuadron* escuadron;
   string ciudad;
@@ -160,7 +161,7 @@ void anadirSoldado(Simulador* sim){
       ciudad = "Roma";
     }else{
       ejercito = sim->getEjercitoCartago();
-      ciudad = "Cartago"
+      ciudad = "Cartago";
     }
   }
 
@@ -172,8 +173,12 @@ void anadirSoldado(Simulador* sim){
     cout << i << ". " << ejercito->getEscuadronesFrontales().at(i).getNombre() << '\n';
   }
 
-  cout << i << ". " << ejercito->getEscuadronRetaguardia().getNombre() << "[Frontal]" << endl << endl
-  << "Ingrese el número de la opción que desea - ";
+  if (ejercito->getEscuadronRetaguardia() != NULL) {
+    cout << i << ". " << ejercito->getEscuadronRetaguardia()->getNombre() << "[Frontal]" << endl << endl;
+  }
+
+
+  cout << "Ingrese el número de la opción que desea - ";
   cin >> opcion;
   cout << "----------------------------------" << endl;
 
@@ -185,7 +190,7 @@ void anadirSoldado(Simulador* sim){
       escuadron = ejercito->getEscuadronRetaguardia();
       cout << "Escuadrón Seleccionado: " << escuadron->getNombre() << endl << endl;
     }else{
-      escuadron = ejercito->getEscuadronesFrontales().at(opcion);
+      escuadron = &(ejercito->getEscuadronesFrontales().at(opcion));
       cout << "Escuadrón Seleccionado: " << escuadron->getNombre() << endl << endl;
     }
   }
@@ -200,16 +205,45 @@ void anadirSoldado(Simulador* sim){
   cout << "----------------------------------" << endl;
 
   string nombre;
+  int edad;
+
+  cout << "Ingrese los datos requeridos: " << '\n'
+  << "Nombre: ";
+  cin >> nombre;
+  cout << "Edad: ";
+  cin >> edad;
+  cout << "Número de Flechas: ";
 
   switch (opcion) {
     case 1:{
+      int flechas;
+      int precision;
+      cout << "Número de Flechas: ";
+      cin >> flechas;
+      cout << "Precisión (mm): ";
+      cin >> precision;
 
-    }break:
+      escuadron->anadirSoldado(new Arquero(nombre, ciudad, edad, flechas, precision));
+    }break;
     case 2:{
+      int dureza;
+      int lanzas;
+      cout << "Dureza (1-10): ";
+      cin >> dureza;
+      cout << "Cantidad de Lanzas: ";
+      cin >> lanzas;
 
+      escuadron->anadirSoldado(new CorazaDura(nombre, ciudad, edad, dureza, lanzas));
     }break;
     case 3:{
+      int asesinatos;
+      int stealth;
+      cout << "Asesinatos Cometidos: ";
+      cin >> asesinatos;
+      cout << "Nivel de Sigilo: ";
+      cin >> stealth;
 
+      escuadron->anadirSoldado(new AsesinoOculto(nombre, ciudad, edad, asesinatos, stealth));
     }break;
     default:{
       cout << "[ERROR] Opción no válida, intente de nuevo." << endl;
@@ -217,6 +251,6 @@ void anadirSoldado(Simulador* sim){
     }break;
   }
 
-  cout << endl << "Soldados añadidos exitosamente." << endl;
+  cout << endl << "Soldado añadido exitosamente." << endl;
   return 0;
 }
