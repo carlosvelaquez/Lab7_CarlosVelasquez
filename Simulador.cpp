@@ -16,10 +16,10 @@ int Simulador::simularBatalla(){
   std::cout << "Simulando Batalla..." << '\n';
   std::cout << "Es el turno de los romanos." << endl << '\n';
 
-  std::cout << "Seleccione el ejercito front/* message */al que atacará: " << '\n';
+  std::cout << "Seleccione el ejercito frontal que atacará: " << '\n';
 
   int op;
-  for (size_t i = 0; i < roma->getEscuadronesFrontales().size(); i++) {
+  for (int i = 0; i < roma->getEscuadronesFrontales().size(); i++) {
     std::cout << i << ". " << roma->getEscuadronesFrontales().at(i).getNombre() << '\n';
   }
   cout << "Ingrese el número de la opción que desea - ";
@@ -50,10 +50,10 @@ int Simulador::simularBatalla(){
   std::cout << "Defensa Cartaginesa: " << defensa << '\n';
   std::cout << "Ataque Cartaginés: " << ataque << '\n';
 
-  if (defensa >= ataqueC*10) {
+  if (defensa > ataqueC*10) {
     std::cout << "Los romanos ganan!" << '\n';
   }else{
-    if (defensaC >= ataque*10) {
+    if (defensaC > ataque*10) {
       std::cout << "Los cartagineses ganan!" << '\n';
     }else{
       std::cout << "Es un empate!" << '\n';
