@@ -50,6 +50,8 @@ int Simulador::simularBatalla(){
   std::cout << "Defensa Cartaginesa: " << defensa << '\n';
   std::cout << "Ataque Cartaginés: " << ataque << '\n';
 
+  std::cout << '\n';
+
   if (defensa > ataqueC*10) {
     std::cout << "Los romanos ganan!" << '\n';
   }else{
