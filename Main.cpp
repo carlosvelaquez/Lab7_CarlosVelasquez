@@ -10,6 +10,8 @@ int main(){
 
       case 3:{
         salir = true;
+        cout << "Saliendo..." << endl;
+        cout << "----------------------------------" << endl;
       }break;
       default:{
         cout << "Opción inválida, por favor intente de nuevo." << endl;
