@@ -14,5 +14,5 @@ private:
   Ejercito roma;
   Ejercito cartago;
 public:
-  simularBatalla();
+  void simularBatalla();
 };

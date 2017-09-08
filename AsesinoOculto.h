@@ -1,13 +1,13 @@
 #pragma once
 #include "Soldado.h"
 
-class AsesinoOculto{
+class AsesinoOculto : public Soldado{
 private:
   int asesinatos;
   int stealth;
 
 public:
-  AsesinoOculto();
+  AsesinoOculto(string, string, int, int, int);
 
   int getAsesinatos();
   int getStealth();

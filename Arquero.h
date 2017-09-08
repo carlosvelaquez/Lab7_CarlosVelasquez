@@ -16,4 +16,5 @@ public:
   void setPrecision(int);
 
   float calcularAtaque();
+  float calcularDefensa();
 };

@@ -18,6 +18,6 @@ public:
   void setCiudad(string);
   void setEdad(int);
 
-  virtual float calcularAtaque() = 0;
-  virtual float calcularDefensa() = 0;
+  virtual float calcularAtaque();
+  virtual float calcularDefensa();
 };

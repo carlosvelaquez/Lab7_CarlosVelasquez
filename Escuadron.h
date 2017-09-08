@@ -14,6 +14,8 @@ private:
   vector<Soldado> soldados;
 
 public:
+  Escuadron(string);
+
   string getNombre();
   vector<Soldado> getSoldados();
 

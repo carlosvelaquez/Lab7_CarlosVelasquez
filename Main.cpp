@@ -1,5 +1,7 @@
 #include "Ejercito.h"
 
+int menu();
+
 int main(){
   bool salir = false;
 

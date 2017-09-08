@@ -5,7 +5,7 @@ Escuadron::Escuadron(string nNombre){
 }
 
 string Escuadron::getNombre(){
-  return string;
+  return nombre;
 }
 
 vector<Soldado> Escuadron::getSoldados(){
