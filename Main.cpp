@@ -23,6 +23,9 @@ int main(){
             case 2:{
               anadirSoldado(simulador);
             }break;
+            case 3:{
+              simulador->simularBatalla();
+            }break;
             case 4:{
               salirEjercitos = true;
               cout << "Regresando a Menú Principal..." << endl;
